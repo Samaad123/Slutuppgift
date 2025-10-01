@@ -32,10 +32,12 @@ while (running)
     Console.WriteLine("3. Logga ut");
     Console.WriteLine("4. Ladda upp item");
     Console.WriteLine("5. List Others Items");
-    // Console.WriteLine("6. Begär en trade");
-    // Console.WriteLine("7. Acceptera Request");
-    // Console.WriteLine("8. Neka trade");
-    // Console.WriteLine("9. Visa genomförda trades");
+    Console.WriteLine("5. List Others Items");
+    Console.WriteLine("6. Show My Items");
+    // Console.WriteLine("7. Begär en trade");
+    // Console.WriteLine("8. Acceptera Request");
+    // Console.WriteLine("9. Neka trade");
+    // Console.WriteLine("10. Visa genomförda trades");
     // Console.WriteLine("0. Avsluta");
 
     string choice = Console.ReadLine(); // skapar en string till det som usern väljer
@@ -64,18 +66,23 @@ while (running)
             break;
 
         case "6":
-            //RequestTrade();
+            showMyItems();
+            //ListOthersItems();
             break;
 
         case "7":
-            //AcceptRequest();
+            //RequestTrade();
             break;
 
         case "8":
-                //DenyRequest();
+            //AcceptRequest();
             break;
 
         case "9":
+                //DenyRequest();
+            break;
+
+        case "10":
             //ViewCompletedTrades();
             break;
 
@@ -187,9 +194,11 @@ void showMyItems()
         {
             Console.WriteLine("Itemname: " + item.Name + ". Item description: " + item.Description + ". Item owner: " + item.Owner);
         }
-        
+
     }
 }
+
+
 
  
 
