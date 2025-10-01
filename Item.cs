@@ -4,10 +4,10 @@ class Item
 {
     public string Name;
     public string Description;
-    public User Owner;
+    public string Owner;
 
     // konstruktör 
-    public Item(string name, string description, User owner)
+    public Item(string name, string description, string owner)
     {
         Name = name;
         Description = description;

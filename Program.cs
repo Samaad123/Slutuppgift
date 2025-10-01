@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks.Dataflow;
 using Slutuppgift;
 
@@ -18,9 +19,9 @@ using Slutuppgift;
 User? active_user = null;
 
 User user_ett = new User ("Lukas", "Lösenord");
-Item ettItem = new Item("Dator", "Svart", user_ett);
+Item ettItem = new Item("Dator", "Svart", "samaad");
 
-Console.WriteLine("användare ett har lösenord: " + ettItem.Owner._password);
+Console.WriteLine("användare ett har lösenord: " + ettItem.Owner);
         bool running = true;
 
 while (running)
@@ -29,8 +30,8 @@ while (running)
     Console.WriteLine("1. Registrera Konto");
     Console.WriteLine("2. Logga in");
     Console.WriteLine("3. Logga ut");
-    // Console.WriteLine("4. Ladda upp item");
-    // Console.WriteLine("5. List Others Items");
+    Console.WriteLine("4. Ladda upp item");
+    Console.WriteLine("5. List Others Items");
     // Console.WriteLine("6. Begär en trade");
     // Console.WriteLine("7. Acceptera Request");
     // Console.WriteLine("8. Neka trade");
@@ -54,10 +55,11 @@ while (running)
             break;
 
         case "4":
-            //UploadItem();
+            UploadItem();
             break;
 
         case "5":
+            showAllItems();
             //ListOthersItems();
             break;
 
@@ -148,6 +150,49 @@ void Logout()
     Console.WriteLine("Hej då!");
 
 }
+
+
+void UploadItem()
+{
+
+    Console.WriteLine("Enter item name");
+    string name = Console.ReadLine();
+
+    Console.WriteLine("Enter item description");
+    string description = Console.ReadLine();
+
+    Console.WriteLine("Enter owner email");
+    string owner = Console.ReadLine();
+    Item itemToAdd = new Item(name, description, owner);
+
+    items.Add(itemToAdd);
+
+    Console.WriteLine("Item has sucessfully been added!");
+
+}
+
+void showAllItems()
+{
+    foreach (Item item in items)
+    {
+        Console.WriteLine("Itemname: " + item.Name + ". Item description: " + item.Description + ". Item owner: " + item.Owner);
+    }
+}
+
+void showMyItems()
+{
+    foreach (Item item in items)
+    {
+        if (item.Owner == active_user.Email)
+        {
+            Console.WriteLine("Itemname: " + item.Name + ". Item description: " + item.Description + ". Item owner: " + item.Owner);
+        }
+        
+    }
+}
+
+ 
+
 
 
 //while (bool = running );

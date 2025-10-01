@@ -3,7 +3,7 @@ namespace Slutuppgift;
 class User
 {
     public string Email;
-    string _password;
+    public string _password;
 
     //konstruktör
     public User(string email, string password)
