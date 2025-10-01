@@ -25,10 +25,10 @@ Console.WriteLine("användare ett har lösenord: " + ettItem.Owner._password);
 
 while (running)
 {
-    Console.WriteLine("Välj ett alternative:");
+    Console.WriteLine("Välj ett nummer:");
     Console.WriteLine("1. Registrera Konto");
     Console.WriteLine("2. Logga in");
-    // Console.WriteLine("3. Logga ut");
+    Console.WriteLine("3. Logga ut");
     // Console.WriteLine("4. Ladda upp item");
     // Console.WriteLine("5. List Others Items");
     // Console.WriteLine("6. Begär en trade");
@@ -50,7 +50,7 @@ while (running)
             break;
 
         case "3":
-            //Logout();
+            Logout();
             break;
 
         case "4":
@@ -126,19 +126,26 @@ void Login()
     Console.Write("Write your password: ");
     string password = Console.ReadLine();
 
-foreach (User test in users)
-{
-    if (userEmail == test.Email && password == test._password)
+    foreach (User test in users)
     {
-        active_user = test;
-    }
-    else
-    {
-        Console.WriteLine("Fel info");
+        if (userEmail == test.Email && password == test._password)
+        {
+            active_user = test;
+        }
+        else
+        {
+            Console.WriteLine("Fel info");
         }
     }
-Console.WriteLine("inloggad användare är: " + active_user.Email);
+    Console.WriteLine("inloggad användare är: " + active_user.Email);
 
+}
+
+
+void Logout()
+{
+    running = false;
+    Console.WriteLine("Hej då!");
 
 }
 
