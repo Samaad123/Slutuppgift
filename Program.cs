@@ -31,8 +31,7 @@ while (running)
     Console.WriteLine("2. Logga in");
     Console.WriteLine("3. Logga ut");
     Console.WriteLine("4. Ladda upp item");
-    Console.WriteLine("5. List Others Items");
-    Console.WriteLine("5. List Others Items");
+    Console.WriteLine("5. Show All Items");
     Console.WriteLine("6. Show My Items");
     // Console.WriteLine("7. Begär en trade");
     // Console.WriteLine("8. Acceptera Request");
@@ -190,9 +189,14 @@ void showMyItems()
 {
     foreach (Item item in items)
     {
-        if (item.Owner == active_user.Email)
+        if (item.Owner == active_user?.Email)
         {
             Console.WriteLine("Itemname: " + item.Name + ". Item description: " + item.Description + ". Item owner: " + item.Owner);
+        }
+
+        else
+        {
+            Console.WriteLine("No current items, or user not logged in. Please Try again.");
         }
 
     }
