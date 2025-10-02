@@ -3,16 +3,19 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks.Dataflow;
+using System.Transactions;
 using Slutuppgift;
 
 using Slutuppgift;
         // Lägger till lista på de enkla saker som behövs medans programmet kör
         List<User> users = new List<User>();
         List<Item> items = new List<Item>();
+        List<TradeRequest> tradeRequests = new List<TradeRequest>();
 //List<TradeRequest> TradeRequests = new();
 //List<TradeRequest> CompletedTrades = new();
 
@@ -33,10 +36,12 @@ while (running)
     Console.WriteLine("4. Upload an item");
     Console.WriteLine("5. Show All Items");
     Console.WriteLine("6. Show My Items");
-    Console.WriteLine("7. Request en trade");
-    // Console.WriteLine("8. Accept Request");
-    // Console.WriteLine("9. Deny Request");
-    // Console.WriteLine("10. Show completed trades");
+    Console.WriteLine("7. Request a trade");
+    Console.WriteLine("8. Display all trade requests");
+
+    // Console.WriteLine("9. Accept Request");
+    // Console.WriteLine("10. Deny Request");
+    // Console.WriteLine("11. Show completed trades");
     // Console.WriteLine("0. Quit");
 
     string choice = Console.ReadLine(); // skapar en string till det som usern väljer
@@ -68,18 +73,23 @@ while (running)
             break;
 
         case "7":
-            //RequestTrade();
+            RequestTrade();
             break;
 
         case "8":
+            //DisplayTradeRequests();
+            break;
+
+
+        case "9":
             //AcceptRequest();
             break;
 
-        case "9":
+        case "10":
                 //DenyRequest();
             break;
 
-        case "10":
+        case "11":
             //ViewCompletedTrades();
             break;
 
@@ -198,6 +208,26 @@ void showMyItems()
         }
 
     }
+}
+
+void RequestTrade()
+{
+    Console.WriteLine("Enter your email: ");
+    string RequestingUser = Console.ReadLine();
+
+    Console.WriteLine("Enter item you would like to trade away: ");
+    string UserItem = Console.ReadLine();
+
+    Console.WriteLine("Enter item you would like to receive: ");
+    string TargetItem = Console.ReadLine();
+
+    TradeRequest tradeRequest = new TradeRequest(RequestingUser, UserItem, TargetItem);
+        tradeRequests.Add(tradeRequest);  // adding traderequest to the traderequest list.
+
+
+    Console.WriteLine("Trade Request Successful and Pending");
+
+
 }
 
 
