@@ -27,17 +27,17 @@ Console.WriteLine("användare ett har lösenord: " + ettItem.Owner);
 while (running)
 {
     Console.WriteLine("Välj ett nummer:");
-    Console.WriteLine("1. Registrera Konto");
-    Console.WriteLine("2. Logga in");
-    Console.WriteLine("3. Logga ut");
-    Console.WriteLine("4. Ladda upp item");
+    Console.WriteLine("1. Register Account");
+    Console.WriteLine("2. Log in");
+    Console.WriteLine("3. Log out");
+    Console.WriteLine("4. Upload an item");
     Console.WriteLine("5. Show All Items");
     Console.WriteLine("6. Show My Items");
-    // Console.WriteLine("7. Begär en trade");
-    // Console.WriteLine("8. Acceptera Request");
-    // Console.WriteLine("9. Neka trade");
-    // Console.WriteLine("10. Visa genomförda trades");
-    // Console.WriteLine("0. Avsluta");
+    Console.WriteLine("7. Request en trade");
+    // Console.WriteLine("8. Accept Request");
+    // Console.WriteLine("9. Deny Request");
+    // Console.WriteLine("10. Show completed trades");
+    // Console.WriteLine("0. Quit");
 
     string choice = Console.ReadLine(); // skapar en string till det som usern väljer
 
@@ -61,12 +61,10 @@ while (running)
 
         case "5":
             showAllItems();
-            //ListOthersItems();
             break;
 
         case "6":
             showMyItems();
-            //ListOthersItems();
             break;
 
         case "7":
@@ -153,7 +151,7 @@ void Login()
 void Logout()
 {
     running = false;
-    Console.WriteLine("Hej då!");
+    Console.WriteLine("Goodbye!");
 
 }
 
@@ -162,13 +160,13 @@ void UploadItem()
 {
 
     Console.WriteLine("Enter item name");
-    string name = Console.ReadLine();
+    string? name = Console.ReadLine();
 
     Console.WriteLine("Enter item description");
-    string description = Console.ReadLine();
+    string? description = Console.ReadLine();
 
     Console.WriteLine("Enter owner email");
-    string owner = Console.ReadLine();
+    string? owner = Console.ReadLine();
     Item itemToAdd = new Item(name, description, owner);
 
     items.Add(itemToAdd);
