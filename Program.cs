@@ -77,7 +77,7 @@ while (running)
             break;
 
         case "8":
-            //DisplayTradeRequests();
+            DisplayTradeRequests();
             break;
 
 
@@ -222,7 +222,7 @@ void RequestTrade()
     string TargetItem = Console.ReadLine();
 
     TradeRequest tradeRequest = new TradeRequest(RequestingUser, UserItem, TargetItem);
-        tradeRequests.Add(tradeRequest);  // adding traderequest to the traderequest list.
+    tradeRequests.Add(tradeRequest);  // adding traderequest to the traderequest list.
 
 
     Console.WriteLine("Trade Request Successful and Pending");
@@ -231,11 +231,17 @@ void RequestTrade()
 }
 
 
+void DisplayTradeRequests()
+{
+    Console.WriteLine("All Trade Requests:");
+        foreach (var request in tradeRequests)
+        {
+            Console.WriteLine($"From: {request.RequestingUser} wants to trade {request.UserItem} for {request.TargetItem}. Status: {request.Status}");
+        }
+}
 
  
 
 
 
-//while (bool = running );
 
-//switch 1-5 
