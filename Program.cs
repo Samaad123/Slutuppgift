@@ -279,8 +279,35 @@ void AcceptRequest()
 
 void DenyRequest()
 {
+Console.WriteLine("Enter your email: ");
+    string email = Console.ReadLine();
+
+    Console.WriteLine("Pending Trade Requests:");
     
+    // Show all pending requests for this user
+    for (int i = 0; i < tradeRequests.Count; i++)
+    {
+        TradeRequest request = tradeRequests[i];
+        if (request.ItemOwner == email && request.Status == "Pending")
+        {
+            Console.WriteLine($"{i + 1}. From {request.RequestingUser} - {request.UserItem} for {request.TargetItem}");
+        }
+    }
+
+    Console.WriteLine("Enter the number of the trade request you want to deny:");
+    int choice = int.Parse(Console.ReadLine()) - 1;
+
+    if (choice < 0 || choice >= tradeRequests.Count)
+    {
+        Console.WriteLine("Invalid choice.");
+        return;
+    }
+
+    // Accept the trade request
+    tradeRequests[choice].Status = "Denied";
+    Console.WriteLine($"Trade denied!");
 }
+
 
 
 
