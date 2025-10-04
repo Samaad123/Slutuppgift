@@ -38,11 +38,11 @@ while (running)
     Console.WriteLine("6. Show My Items");
     Console.WriteLine("7. Request a trade");
     Console.WriteLine("8. Display all trade requests");
+    Console.WriteLine("9. Accept Request");
 
-    // Console.WriteLine("9. Accept Request");
     // Console.WriteLine("10. Deny Request");
     // Console.WriteLine("11. Show completed trades");
-    // Console.WriteLine("0. Quit");
+    Console.WriteLine("0. Quit");
 
     string choice = Console.ReadLine(); // skapar en string till det som usern väljer
 
@@ -82,7 +82,7 @@ while (running)
 
 
         case "9":
-            //AcceptRequest();
+            AcceptRequest();
             break;
 
         case "10":
@@ -221,6 +221,10 @@ void RequestTrade()
     Console.WriteLine("Enter item you would like to receive: ");
     string TargetItem = Console.ReadLine();
 
+    Console.WriteLine("Enter item the email of the item owner: ");
+    string ItemOwner = Console.ReadLine();
+
+
     TradeRequest tradeRequest = new TradeRequest(RequestingUser, UserItem, TargetItem);
     tradeRequests.Add(tradeRequest);  // adding traderequest to the traderequest list.
 
@@ -239,6 +243,12 @@ void DisplayTradeRequests()
             Console.WriteLine($"From: {request.RequestingUser} wants to trade {request.UserItem} for {request.TargetItem}. Status: {request.Status}");
         }
 }
+
+void AcceptRequest()
+{
+    
+}
+
 
  
 
