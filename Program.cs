@@ -39,9 +39,8 @@ while (running)
     Console.WriteLine("7. Request a trade");
     Console.WriteLine("8. Display all trade requests");
     Console.WriteLine("9. Accept Request");
-
     Console.WriteLine("10. Deny Request");
-    // Console.WriteLine("11. Show completed trades");
+    Console.WriteLine("11. Show completed trades");
     Console.WriteLine("0. Quit");
 
     string choice = Console.ReadLine(); // skapar en string till det som usern väljer
@@ -90,7 +89,7 @@ while (running)
             break;
 
         case "11":
-            //ViewCompletedTrades();
+            ViewCompletedTrades();
             break;
 
         case "0":
@@ -279,11 +278,11 @@ void AcceptRequest()
 
 void DenyRequest()
 {
-Console.WriteLine("Enter your email: ");
+    Console.WriteLine("Enter your email: ");
     string email = Console.ReadLine();
 
     Console.WriteLine("Pending Trade Requests:");
-    
+
     // Show all pending requests for this user
     for (int i = 0; i < tradeRequests.Count; i++)
     {
@@ -307,6 +306,21 @@ Console.WriteLine("Enter your email: ");
     tradeRequests[choice].Status = "Denied";
     Console.WriteLine($"Trade denied!");
 }
+
+void ViewCompletedTrades()
+{
+    Console.WriteLine("Completed Trades:");
+
+    // Check if there are any completed trades (Accepted or Denied)
+    foreach (var request in tradeRequests)
+    {
+        if (request.Status == "Accepted" || request.Status == "Denied")
+        {
+            Console.WriteLine($"{request.RequestingUser} wanted to trade {request.UserItem} for {request.TargetItem}. Status: {request.Status}");
+        }
+    }
+}
+
 
 
 
