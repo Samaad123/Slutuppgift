@@ -40,7 +40,7 @@ while (running)
     Console.WriteLine("8. Display all trade requests");
     Console.WriteLine("9. Accept Request");
 
-    // Console.WriteLine("10. Deny Request");
+    Console.WriteLine("10. Deny Request");
     // Console.WriteLine("11. Show completed trades");
     Console.WriteLine("0. Quit");
 
@@ -86,7 +86,7 @@ while (running)
             break;
 
         case "10":
-                //DenyRequest();
+            DenyRequest();
             break;
 
         case "11":
@@ -225,7 +225,7 @@ void RequestTrade()
     string ItemOwner = Console.ReadLine();
 
 
-    TradeRequest tradeRequest = new TradeRequest(RequestingUser, UserItem, TargetItem);
+    TradeRequest tradeRequest = new TradeRequest(RequestingUser, UserItem, TargetItem, ItemOwner);
     tradeRequests.Add(tradeRequest);  // adding traderequest to the traderequest list.
 
 
@@ -240,17 +240,47 @@ void DisplayTradeRequests()
     Console.WriteLine("All Trade Requests:");
         foreach (var request in tradeRequests)
         {
-            Console.WriteLine($"From: {request.RequestingUser} wants to trade {request.UserItem} for {request.TargetItem}. Status: {request.Status}");
+            Console.WriteLine($"From: {request.RequestingUser} wants to trade {request.UserItem}, item owner is {request.ItemOwner} for {request.TargetItem}. Status: {request.Status}");
         }
 }
 
 void AcceptRequest()
 {
+    Console.WriteLine("Enter your email: ");
+    string email = Console.ReadLine();
+
+    Console.WriteLine("Pending Trade Requests:");
     
+    // Show all pending requests for this user
+    for (int i = 0; i < tradeRequests.Count; i++)
+    {
+        TradeRequest request = tradeRequests[i];
+        if (request.ItemOwner == email && request.Status == "Pending")
+        {
+            Console.WriteLine($"{i + 1}. From {request.RequestingUser} - {request.UserItem} for {request.TargetItem}");
+        }
+    }
+
+    Console.WriteLine("Enter the number of the trade request you want to accept:");
+    int choice = int.Parse(Console.ReadLine()) - 1;
+
+    if (choice < 0 || choice >= tradeRequests.Count)
+    {
+        Console.WriteLine("Invalid choice.");
+        return;
+    }
+
+    // Accept the trade request
+    tradeRequests[choice].Status = "Accepted";
+    Console.WriteLine($"Trade accepted! {tradeRequests[choice].UserItem} will be traded for {tradeRequests[choice].TargetItem}");
 }
 
 
- 
+
+void DenyRequest()
+{
+    
+}
 
 
 
