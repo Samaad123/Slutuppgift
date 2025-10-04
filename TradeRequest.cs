@@ -9,12 +9,12 @@ class TradeRequest
     public string ItemOwner;  // owner of the item
 
     // Constructor to create a trade request
-    public TradeRequest(string requestingUser, string userItem, string targetItem)
+    public TradeRequest(string requestingUser, string userItem, string targetItem, string itemOwner)
     {
         RequestingUser = requestingUser;
         UserItem = userItem;
         TargetItem = targetItem;
-        ItemOwner = ItemOwner;
+        ItemOwner = itemOwner;
         Status = "Pending";  // Default status
     }
 }
