@@ -17,7 +17,9 @@ using Slutuppgift;
         List<Item> items = new List<Item>();
         List<TradeRequest> tradeRequests = new List<TradeRequest>();
 //List<TradeRequest> TradeRequests = new();
-//List<TradeRequest> CompletedTrades = new();
+    List<TradeRequest> CompletedTrades = new();
+
+    Console.WriteLine("New account added successfully");
 
 User? active_user = null;
 
@@ -29,6 +31,7 @@ Console.WriteLine("användare ett har lösenord: " + ettItem.Owner);
 
 while (running)
 {
+
     Console.WriteLine("Välj ett nummer:");
     Console.WriteLine("1. Register Account");
     Console.WriteLine("2. Log in");

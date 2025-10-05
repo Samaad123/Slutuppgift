@@ -13,4 +13,14 @@ class Item
         Description = description;
         Owner = owner;
     }
+
+
+    // Getter for Item Name
+    public string GetItemName() => Name;
+
+    // Getter for Item Description
+    public string GetItemDescription() => Description;
+
+    // Getter for Item Owner's Email
+    public string GetOwnerEmail() => Owner;
 }

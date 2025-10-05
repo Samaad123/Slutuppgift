@@ -17,4 +17,11 @@ class TradeRequest
         ItemOwner = itemOwner;
         Status = "Pending";  // Default status
     }
+
+       // Getter methods
+    public string GetRequestingUserEmail() => RequestingUser;
+    public string GetUserItem() => UserItem;
+    public string GetTargetItem() => TargetItem;
+    public string GetStatus() => Status;
+    public string GetItemOwner() => ItemOwner;
 }

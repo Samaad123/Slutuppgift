@@ -10,8 +10,15 @@ class User
     {
         Email = email;
         _password = password;
+
     }
     
+    // Getter methods for Email and Password
+    public string GetUserEmail() => Email;
+    public string GetPassword() => _password;
+
+
+ 
 }
 
 
