@@ -8,7 +8,7 @@ namespace Slutuppgift;
     class Save
     {
         // Save users to users.txt
-        public static void SaveUsers(List<User> users)
+        void SaveUsers(List<User> users)
         {
             using (StreamWriter writer = new StreamWriter("users.txt", append: false))
             {
@@ -21,7 +21,7 @@ namespace Slutuppgift;
         }
 
         // Load users from users.txt
-        public static List<User> LoadUsers()
+        List<User> LoadUsers()
         {
             List<User> users = new List<User>();
 
@@ -45,7 +45,7 @@ namespace Slutuppgift;
         }
 
         // Save items to items.txt
-        public static void SaveItems(List<Item> items)
+        void SaveItems(List<Item> items)
         {
             using (StreamWriter writer = new StreamWriter("items.txt", append: false))
             {
@@ -58,7 +58,7 @@ namespace Slutuppgift;
         }
 
         // Load items from items.txt
-        public static List<Item> LoadItems()
+         List<Item> LoadItems()
         {
             List<Item> items = new List<Item>();
 
@@ -82,7 +82,7 @@ namespace Slutuppgift;
         }
 
         // Save trade requests to trades.txt
-        public static void SaveTrades(List<TradeRequest> tradeRequests)
+        void SaveTrades(List<TradeRequest> tradeRequests)
         {
             using (StreamWriter writer = new StreamWriter("trades.txt", append: false))
             {
@@ -95,7 +95,7 @@ namespace Slutuppgift;
         }
 
         // Load trade requests from trades.txt
-        static List<TradeRequest> LoadTrades()
+        List<TradeRequest> LoadTrades()
         {
             List<TradeRequest> tradeRequests = new List<TradeRequest>();
 

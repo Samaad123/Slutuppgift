@@ -125,9 +125,9 @@ while (running)
 void Register()
 {
     Console.Write("Add your email: ");
-    string userEmail = Console.ReadLine();
+    string? userEmail = Console.ReadLine();
     Console.Write("Add your password: ");
-    string password = Console.ReadLine();
+    string? password = Console.ReadLine();
 
     User newUser = new User(userEmail, password);
 
@@ -140,9 +140,9 @@ void Register()
 void Login()
 {
     Console.Write("Write your email: ");
-    string userEmail = Console.ReadLine();
+    string? userEmail = Console.ReadLine();
     Console.Write("Write your password: ");
-    string password = Console.ReadLine();
+    string? password = Console.ReadLine();
 
     foreach (User test in users)
     {
